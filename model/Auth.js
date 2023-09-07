@@ -9,21 +9,14 @@ const AuthSchema = new mongoose.Schema(
       required: [true, "can't be blank"],
       match: [/\S+@\S+\.\S+/, "is invalid"],
       index: true,
+      max:30
     },
     role: {
       type: String,
       lowercase: true,
     },
-    limit:{
-      type: Number,
-      default:0,
-    },
-    access_time:{
-      type: Date,
-      default: Date.now
-    },
     user:{ type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    password: { type: String, required: true },
+    password: { type: String, required: true ,max:30},
   },
   { timestamps: true }
 );
